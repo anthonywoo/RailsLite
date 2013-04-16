@@ -9,9 +9,9 @@ class Router
 		@routes << route
 	end
 
-	def run
-
-	end
+	# def run(req)
+	# 	binding.pry
+	# end
 
 	http_methods.each do |method|
 		define_method(method) do |pattern, controller_class, action_name|
@@ -25,6 +25,9 @@ class Router
 	end
 
 	def run(req,res)
+		#req.path
+		id = /\/\d/.match("statuses/1/")[0].gsub("/", "").to_i
+		query = req.query #req.query
 		match(req).run(req,res) if match(req)
 	end
 

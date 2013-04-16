@@ -1,10 +1,11 @@
 class ControllerBase
-	attr_accessor :req, :res, :session
-	def initialize(req, res)
+	attr_accessor :req, :res, :session, :params
+	def initialize(req, res, params)
 		@req = req
 		@res = res
 		@response_built = false
 		session
+		
 	end
 
 	def render_content(content, body_type)
